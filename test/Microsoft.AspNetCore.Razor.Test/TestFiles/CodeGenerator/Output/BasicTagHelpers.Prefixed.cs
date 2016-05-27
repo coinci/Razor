@@ -17,6 +17,8 @@ namespace TestOutput
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("Hello World"));
         private global::TestNamespace.InputTagHelper __TestNamespace_InputTagHelper = null;
         private global::TestNamespace.InputTagHelper2 __TestNamespace_InputTagHelper2 = null;
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "checkbox");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_2 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("checked", "true");
         #line hidden
         public BasicTagHelpers.Prefixed()
         {
@@ -41,15 +43,11 @@ namespace TestOutput
                 __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
                 __TestNamespace_InputTagHelper2 = CreateTagHelper<global::TestNamespace.InputTagHelper2>();
                 __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper2);
-                __TestNamespace_InputTagHelper.Type = "checkbox";
-                __tagHelperExecutionContext.AddTagHelperAttribute("type", __TestNamespace_InputTagHelper.Type);
+                __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_1.Value.ToString();
+                __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_1);
                 __TestNamespace_InputTagHelper2.Type = __TestNamespace_InputTagHelper.Type;
-#line 8 "BasicTagHelpers.Prefixed.cshtml"
- __TestNamespace_InputTagHelper2.Checked = true;
-
-#line default
-#line hidden
-                __tagHelperExecutionContext.AddTagHelperAttribute("checked", __TestNamespace_InputTagHelper2.Checked);
+                __TestNamespace_InputTagHelper2.Checked = __tagHelperAttribute_2.Value.ToString();
+                __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_2);
                 await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
                 Instrumentation.BeginContext(189, 41, false);
                 Write(__tagHelperExecutionContext.Output);

@@ -15,8 +15,11 @@ namespace TestOutput
         private global::Microsoft.AspNetCore.Razor.Runtime.TagHelperScopeManager __tagHelperScopeManager = null;
         private global::TestNamespace.InputTagHelper __TestNamespace_InputTagHelper = null;
         private global::TestNamespace.InputTagHelper2 __TestNamespace_InputTagHelper2 = null;
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString(""));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("checked", "");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_2 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString(""));
         private global::TestNamespace.PTagHelper __TestNamespace_PTagHelper = null;
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_3 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("age", "");
         #line hidden
         public EmptyAttributeTagHelpers()
         {
@@ -37,16 +40,12 @@ namespace TestOutput
             __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
             __TestNamespace_InputTagHelper2 = CreateTagHelper<global::TestNamespace.InputTagHelper2>();
             __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper2);
-            __TestNamespace_InputTagHelper.Type = "";
-            __tagHelperExecutionContext.AddTagHelperAttribute("type", __TestNamespace_InputTagHelper.Type);
+            __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_0.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_0);
             __TestNamespace_InputTagHelper2.Type = __TestNamespace_InputTagHelper.Type;
-#line 4 "EmptyAttributeTagHelpers.cshtml"
-__TestNamespace_InputTagHelper2.Checked = ;
-
-#line default
-#line hidden
-            __tagHelperExecutionContext.AddTagHelperAttribute("checked", __TestNamespace_InputTagHelper2.Checked);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
+            __TestNamespace_InputTagHelper2.Checked = __tagHelperAttribute_1.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_1);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(38, 34, false);
             Write(__tagHelperExecutionContext.Output);
@@ -66,16 +65,12 @@ __TestNamespace_InputTagHelper2.Checked = ;
                 __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
                 __TestNamespace_InputTagHelper2 = CreateTagHelper<global::TestNamespace.InputTagHelper2>();
                 __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper2);
-                __TestNamespace_InputTagHelper.Type = "";
-                __tagHelperExecutionContext.AddTagHelperAttribute("type", __TestNamespace_InputTagHelper.Type);
+                __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_0.Value.ToString();
+                __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_0);
                 __TestNamespace_InputTagHelper2.Type = __TestNamespace_InputTagHelper.Type;
-#line 6 "EmptyAttributeTagHelpers.cshtml"
-__TestNamespace_InputTagHelper2.Checked = ;
-
-#line default
-#line hidden
-                __tagHelperExecutionContext.AddTagHelperAttribute("checked", __TestNamespace_InputTagHelper2.Checked);
-                __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
+                __TestNamespace_InputTagHelper2.Checked = __tagHelperAttribute_1.Value.ToString();
+                __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_1);
+                __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
                 await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
                 Instrumentation.BeginContext(98, 34, false);
                 Write(__tagHelperExecutionContext.Output);
@@ -88,12 +83,8 @@ __TestNamespace_InputTagHelper2.Checked = ;
             );
             __TestNamespace_PTagHelper = CreateTagHelper<global::TestNamespace.PTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_PTagHelper);
-#line 5 "EmptyAttributeTagHelpers.cshtml"
-__TestNamespace_PTagHelper.Age = ;
-
-#line default
-#line hidden
-            __tagHelperExecutionContext.AddTagHelperAttribute("age", __TestNamespace_PTagHelper.Age);
+            __TestNamespace_PTagHelper.Age = __tagHelperAttribute_3.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_3);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             if (!__tagHelperExecutionContext.Output.IsContentModified)
             {

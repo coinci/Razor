@@ -15,13 +15,19 @@ namespace TestOutput
         private global::Microsoft.AspNetCore.Razor.Runtime.TagHelperScopeManager __tagHelperScopeManager = null;
         private global::TestNamespace.CatchAllTagHelper __TestNamespace_CatchAllTagHelper = null;
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("bound");
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("[item]", new global::Microsoft.AspNetCore.Html.HtmlString("items"));
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_2 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("[(item)]", new global::Microsoft.AspNetCore.Html.HtmlString("items"));
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_3 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("(click)", new global::Microsoft.AspNetCore.Html.HtmlString("doSomething()"));
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_4 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("(^click)", new global::Microsoft.AspNetCore.Html.HtmlString("doSomething()"));
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_5 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("*something", new global::Microsoft.AspNetCore.Html.HtmlString("value"));
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_6 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("#localminimized");
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_7 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("#local", new global::Microsoft.AspNetCore.Html.HtmlString("value"));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("[item]", "items");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_2 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("[item]", new global::Microsoft.AspNetCore.Html.HtmlString("items"));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_3 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("[(item)]", "items");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_4 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("[(item)]", new global::Microsoft.AspNetCore.Html.HtmlString("items"));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_5 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("(click)", "doSomething()");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_6 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("(click)", new global::Microsoft.AspNetCore.Html.HtmlString("doSomething()"));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_7 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("(^click)", "doSomething()");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_8 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("(^click)", new global::Microsoft.AspNetCore.Html.HtmlString("doSomething()"));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_9 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("*something", "value");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_10 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("*something", new global::Microsoft.AspNetCore.Html.HtmlString("value"));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_11 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("#localminimized");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_12 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("#local", "value");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_13 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("#local", new global::Microsoft.AspNetCore.Html.HtmlString("value"));
         #line hidden
         public SymbolBoundAttributes()
         {
@@ -41,13 +47,9 @@ namespace TestOutput
             __TestNamespace_CatchAllTagHelper = CreateTagHelper<global::TestNamespace.CatchAllTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_CatchAllTagHelper);
             __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
-#line 12 "SymbolBoundAttributes.cshtml"
-__TestNamespace_CatchAllTagHelper.ListItems = items;
-
-#line default
-#line hidden
-            __tagHelperExecutionContext.AddTagHelperAttribute("[item]", __TestNamespace_CatchAllTagHelper.ListItems);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_1);
+            __TestNamespace_CatchAllTagHelper.ListItems = __tagHelperAttribute_1.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_1);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(276, 45, false);
             Write(__tagHelperExecutionContext.Output);
@@ -62,13 +64,9 @@ __TestNamespace_CatchAllTagHelper.ListItems = items;
             __TestNamespace_CatchAllTagHelper = CreateTagHelper<global::TestNamespace.CatchAllTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_CatchAllTagHelper);
             __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
-#line 13 "SymbolBoundAttributes.cshtml"
-__TestNamespace_CatchAllTagHelper.ArrayItems = items;
-
-#line default
-#line hidden
-            __tagHelperExecutionContext.AddTagHelperAttribute("[(item)]", __TestNamespace_CatchAllTagHelper.ArrayItems);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
+            __TestNamespace_CatchAllTagHelper.ArrayItems = __tagHelperAttribute_3.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_3);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_4);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(323, 49, false);
             Write(__tagHelperExecutionContext.Output);
@@ -86,13 +84,9 @@ __TestNamespace_CatchAllTagHelper.ArrayItems = items;
             __TestNamespace_CatchAllTagHelper = CreateTagHelper<global::TestNamespace.CatchAllTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_CatchAllTagHelper);
             __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
-#line 14 "SymbolBoundAttributes.cshtml"
-__TestNamespace_CatchAllTagHelper.Event1 = doSomething();
-
-#line default
-#line hidden
-            __tagHelperExecutionContext.AddTagHelperAttribute("(click)", __TestNamespace_CatchAllTagHelper.Event1);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            __TestNamespace_CatchAllTagHelper.Event1 = __tagHelperAttribute_5.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_5);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_6);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             if (!__tagHelperExecutionContext.Output.IsContentModified)
             {
@@ -114,13 +108,9 @@ __TestNamespace_CatchAllTagHelper.Event1 = doSomething();
             __TestNamespace_CatchAllTagHelper = CreateTagHelper<global::TestNamespace.CatchAllTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_CatchAllTagHelper);
             __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
-#line 15 "SymbolBoundAttributes.cshtml"
-__TestNamespace_CatchAllTagHelper.Event2 = doSomething();
-
-#line default
-#line hidden
-            __tagHelperExecutionContext.AddTagHelperAttribute("(^click)", __TestNamespace_CatchAllTagHelper.Event2);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_4);
+            __TestNamespace_CatchAllTagHelper.Event2 = __tagHelperAttribute_7.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_8);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             if (!__tagHelperExecutionContext.Output.IsContentModified)
             {
@@ -142,9 +132,9 @@ __TestNamespace_CatchAllTagHelper.Event2 = doSomething();
             __TestNamespace_CatchAllTagHelper = CreateTagHelper<global::TestNamespace.CatchAllTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_CatchAllTagHelper);
             __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
-            __TestNamespace_CatchAllTagHelper.StringProperty1 = "value";
-            __tagHelperExecutionContext.AddTagHelperAttribute("*something", __TestNamespace_CatchAllTagHelper.StringProperty1);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_5);
+            __TestNamespace_CatchAllTagHelper.StringProperty1 = __tagHelperAttribute_9.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_9);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_10);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             if (!__tagHelperExecutionContext.Output.IsContentModified)
             {
@@ -163,7 +153,7 @@ __TestNamespace_CatchAllTagHelper.Event2 = doSomething();
             __TestNamespace_CatchAllTagHelper = CreateTagHelper<global::TestNamespace.CatchAllTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_CatchAllTagHelper);
             __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_6);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_11);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(607, 33, false);
             Write(__tagHelperExecutionContext.Output);
@@ -178,9 +168,9 @@ __TestNamespace_CatchAllTagHelper.Event2 = doSomething();
             __TestNamespace_CatchAllTagHelper = CreateTagHelper<global::TestNamespace.CatchAllTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_CatchAllTagHelper);
             __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
-            __TestNamespace_CatchAllTagHelper.StringProperty2 = "value";
-            __tagHelperExecutionContext.AddTagHelperAttribute("#local", __TestNamespace_CatchAllTagHelper.StringProperty2);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __TestNamespace_CatchAllTagHelper.StringProperty2 = __tagHelperAttribute_12.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_12);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_13);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(642, 47, false);
             Write(__tagHelperExecutionContext.Output);

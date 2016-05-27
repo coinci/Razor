@@ -15,11 +15,15 @@ namespace TestOutput
         private global::Microsoft.AspNetCore.Razor.Runtime.TagHelperScopeManager __tagHelperScopeManager = null;
         private global::TestNamespace.PTagHelper __TestNamespace_PTagHelper = null;
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("Hello World"));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("age", "1337");
         private global::TestNamespace.InputTagHelper __TestNamespace_InputTagHelper = null;
         private global::TestNamespace.InputTagHelper2 __TestNamespace_InputTagHelper2 = null;
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("data-content", new global::Microsoft.AspNetCore.Html.HtmlString("hello"));
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_2 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("data-content", new global::Microsoft.AspNetCore.Html.HtmlString("hello2"));
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_3 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("data-content", new global::Microsoft.AspNetCore.Html.HtmlString("blah"));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_2 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "text");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_3 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("data-content", new global::Microsoft.AspNetCore.Html.HtmlString("hello"));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_4 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("age", "1234");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_5 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("data-content", new global::Microsoft.AspNetCore.Html.HtmlString("hello2"));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_6 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "password");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_7 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("data-content", new global::Microsoft.AspNetCore.Html.HtmlString("blah"));
         #line hidden
         public TagHelpersWithWeirdlySpacedAttributes()
         {
@@ -42,12 +46,8 @@ namespace TestOutput
             __TestNamespace_PTagHelper = CreateTagHelper<global::TestNamespace.PTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_PTagHelper);
             __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
-#line 6 "TagHelpersWithWeirdlySpacedAttributes.cshtml"
-__TestNamespace_PTagHelper.Age = 1337;
-
-#line default
-#line hidden
-            __tagHelperExecutionContext.AddTagHelperAttribute("age", __TestNamespace_PTagHelper.Age);
+            __TestNamespace_PTagHelper.Age = __tagHelperAttribute_1.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_1);
             BeginWriteTagHelperAttribute();
 #line 7 "TagHelpersWithWeirdlySpacedAttributes.cshtml"
              Write(true);
@@ -75,10 +75,10 @@ __TestNamespace_PTagHelper.Age = 1337;
             __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
             __TestNamespace_InputTagHelper2 = CreateTagHelper<global::TestNamespace.InputTagHelper2>();
             __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper2);
-            __TestNamespace_InputTagHelper.Type = "text";
-            __tagHelperExecutionContext.AddTagHelperAttribute("type", __TestNamespace_InputTagHelper.Type);
+            __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_2.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_2);
             __TestNamespace_InputTagHelper2.Type = __TestNamespace_InputTagHelper.Type;
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_1);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(122, 47, false);
             Write(__tagHelperExecutionContext.Output);
@@ -92,13 +92,9 @@ __TestNamespace_PTagHelper.Age = 1337;
             );
             __TestNamespace_PTagHelper = CreateTagHelper<global::TestNamespace.PTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_PTagHelper);
-#line 11 "TagHelpersWithWeirdlySpacedAttributes.cshtml"
-__TestNamespace_PTagHelper.Age = 1234;
-
-#line default
-#line hidden
-            __tagHelperExecutionContext.AddTagHelperAttribute("age", __TestNamespace_PTagHelper.Age);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
+            __TestNamespace_PTagHelper.Age = __tagHelperAttribute_4.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_4);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_5);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(173, 46, false);
             Write(__tagHelperExecutionContext.Output);
@@ -114,10 +110,10 @@ __TestNamespace_PTagHelper.Age = 1234;
             __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
             __TestNamespace_InputTagHelper2 = CreateTagHelper<global::TestNamespace.InputTagHelper2>();
             __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper2);
-            __TestNamespace_InputTagHelper.Type = "password";
-            __tagHelperExecutionContext.AddTagHelperAttribute("type", __TestNamespace_InputTagHelper.Type);
+            __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_6.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_6);
             __TestNamespace_InputTagHelper2.Type = __TestNamespace_InputTagHelper.Type;
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(223, 51, false);
             Write(__tagHelperExecutionContext.Output);

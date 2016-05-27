@@ -15,6 +15,8 @@ namespace TestOutput
         private global::Microsoft.AspNetCore.Razor.Runtime.TagHelperScopeManager __tagHelperScopeManager = null;
         private global::TestNamespace.InputTagHelper __TestNamespace_InputTagHelper = null;
         private global::TestNamespace.CatchAllTagHelper __TestNamespace_CatchAllTagHelper = null;
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "checkbox");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("checked", "true");
         #line hidden
         public DuplicateTargetTagHelper()
         {
@@ -35,15 +37,11 @@ namespace TestOutput
             __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
             __TestNamespace_CatchAllTagHelper = CreateTagHelper<global::TestNamespace.CatchAllTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_CatchAllTagHelper);
-            __TestNamespace_InputTagHelper.Type = "checkbox";
-            __tagHelperExecutionContext.AddTagHelperAttribute("type", __TestNamespace_InputTagHelper.Type);
+            __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_0.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_0);
             __TestNamespace_CatchAllTagHelper.Type = __TestNamespace_InputTagHelper.Type;
-#line 3 "DuplicateTargetTagHelper.cshtml"
-__TestNamespace_InputTagHelper.Checked = true;
-
-#line default
-#line hidden
-            __tagHelperExecutionContext.AddTagHelperAttribute("checked", __TestNamespace_InputTagHelper.Checked);
+            __TestNamespace_InputTagHelper.Checked = __tagHelperAttribute_1.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_1);
             __TestNamespace_CatchAllTagHelper.Checked = __TestNamespace_InputTagHelper.Checked;
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(33, 40, false);

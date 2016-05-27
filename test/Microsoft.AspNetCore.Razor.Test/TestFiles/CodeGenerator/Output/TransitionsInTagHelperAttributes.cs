@@ -14,7 +14,9 @@ namespace TestOutput
         private global::Microsoft.AspNetCore.Razor.Runtime.TagHelperRunner __tagHelperRunner = null;
         private global::Microsoft.AspNetCore.Razor.Runtime.TagHelperScopeManager __tagHelperScopeManager = null;
         private global::TestNamespace.PTagHelper __TestNamespace_PTagHelper = null;
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("test"));
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("age", "1337");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("age", "42");
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_2 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("test"));
         #line hidden
         public TransitionsInTagHelperAttributes()
         {
@@ -49,12 +51,8 @@ namespace TestOutput
             }
             ), 107, 6, false);
             EndAddHtmlAttributeValues(__tagHelperExecutionContext);
-#line 7 "TransitionsInTagHelperAttributes.cshtml"
-__TestNamespace_PTagHelper.Age = 1337;
-
-#line default
-#line hidden
-            __tagHelperExecutionContext.AddTagHelperAttribute("age", __TestNamespace_PTagHelper.Age);
+            __TestNamespace_PTagHelper.Age = __tagHelperAttribute_0.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_0);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             if (!__tagHelperExecutionContext.Output.IsContentModified)
             {
@@ -79,12 +77,8 @@ AddHtmlAttributeValue("", 153, @class, 153, 9, false);
 #line default
 #line hidden
             EndAddHtmlAttributeValues(__tagHelperExecutionContext);
-#line 8 "TransitionsInTagHelperAttributes.cshtml"
-__TestNamespace_PTagHelper.Age = 42;
-
-#line default
-#line hidden
-            __tagHelperExecutionContext.AddTagHelperAttribute("age", __TestNamespace_PTagHelper.Age);
+            __TestNamespace_PTagHelper.Age = __tagHelperAttribute_1.Value.ToString();
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_1);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(143, 34, false);
             Write(__tagHelperExecutionContext.Output);
@@ -98,7 +92,7 @@ __TestNamespace_PTagHelper.Age = 42;
             );
             __TestNamespace_PTagHelper = CreateTagHelper<global::TestNamespace.PTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_PTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
 #line 9 "TransitionsInTagHelperAttributes.cshtml"
 __TestNamespace_PTagHelper.Age = 42 + @int;
 
@@ -118,7 +112,7 @@ __TestNamespace_PTagHelper.Age = 42 + @int;
             );
             __TestNamespace_PTagHelper = CreateTagHelper<global::TestNamespace.PTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_PTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
 #line 10 "TransitionsInTagHelperAttributes.cshtml"
 __TestNamespace_PTagHelper.Age = int;
 
@@ -138,7 +132,7 @@ __TestNamespace_PTagHelper.Age = int;
             );
             __TestNamespace_PTagHelper = CreateTagHelper<global::TestNamespace.PTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_PTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
 #line 11 "TransitionsInTagHelperAttributes.cshtml"
 __TestNamespace_PTagHelper.Age = (@int);
 
