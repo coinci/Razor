@@ -140,37 +140,30 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators.Visitors
                             var preAllocatedAttributeKey = new TagHelperAttributeKey(attribute.Key, plainText, isUnBoundAttribute);
                             if (TryCachePreallocatedVariableName(preAllocatedAttributeKey, out preAllocatedAttributeVariableName))
                             {
+                                Writer
+                                    .Write("private static readonly global::")
+                                    .Write(_tagHelperContext.TagHelperAttributeTypeName)
+                                    .Write(" ")
+                                    .Write(preAllocatedAttributeVariableName)
+                                    .Write(" = ")
+                                    .WriteStartNewObject("global::" + _tagHelperContext.TagHelperAttributeTypeName)
+                                    .WriteStringLiteral(attribute.Key)
+                                    .WriteParameterSeparator();
+
                                 if (isUnBoundAttribute)
                                 {
                                     // For unbound attributes, we need to create HtmlString.
                                     Writer
-                                    .Write("private static readonly global::")
-                                    .Write(_tagHelperContext.TagHelperAttributeTypeName)
-                                    .Write(" ")
-                                    .Write(preAllocatedAttributeVariableName)
-                                    .Write(" = ")
-                                    .WriteStartNewObject("global::" + _tagHelperContext.TagHelperAttributeTypeName)
-                                    .WriteStringLiteral(attribute.Key)
-                                    .WriteParameterSeparator()
-                                    .WriteStartNewObject("global::" + _tagHelperContext.EncodedHtmlStringTypeName)
-                                    .WriteStringLiteral(plainText)
-                                    .WriteEndMethodInvocation(endLine: false)
-                                    .WriteEndMethodInvocation();
+                                        .WriteStartNewObject("global::" + _tagHelperContext.EncodedHtmlStringTypeName)
+                                        .WriteStringLiteral(plainText)
+                                        .WriteEndMethodInvocation(endLine: false);
                                 }
                                 else
                                 {
-                                    Writer
-                                    .Write("private static readonly global::")
-                                    .Write(_tagHelperContext.TagHelperAttributeTypeName)
-                                    .Write(" ")
-                                    .Write(preAllocatedAttributeVariableName)
-                                    .Write(" = ")
-                                    .WriteStartNewObject("global::" + _tagHelperContext.TagHelperAttributeTypeName)
-                                    .WriteStringLiteral(attribute.Key)
-                                    .WriteParameterSeparator()
-                                    .WriteStringLiteral(plainText)
-                                    .WriteEndMethodInvocation();
+                                    Writer.WriteStringLiteral(plainText);
                                 }
+
+                                Writer.WriteEndMethodInvocation();
                             }
                         }
                     }
