@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Razor.Chunks;
+using Microsoft.AspNetCore.Razor.Compilation.TagHelpers;
 using Microsoft.Extensions.Internal;
 
 namespace Microsoft.AspNetCore.Razor.CodeGenerators.Visitors
@@ -112,7 +113,7 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators.Visitors
                 var isUnBoundAttribute = !hasAssociatedDescriptors || !boundAttributes.Add(attribute.Key);
 
                 // Perf: We will preallocate TagHelperAttribute for unbound attributes and bound string valued attributes.
-                if (isUnBoundAttribute || IsLiteralAttributeValue(attribute.Value))
+                if (isUnBoundAttribute || CanPreallocateBoundAttribute(chunk.Descriptors, attribute))
                 {
                     string preAllocatedAttributeVariableName = null;
 
@@ -181,21 +182,32 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators.Visitors
             }
         }
 
-        private static bool IsLiteralAttributeValue(Chunk attributeValueChunk)
+        private static bool CanPreallocateBoundAttribute(
+            IEnumerable<TagHelperDescriptor> tagHelperDescriptors,
+            KeyValuePair<string, Chunk> attribute)
         {
-            var parentChunk = attributeValueChunk as ParentChunk;
-
-            if (parentChunk == null || parentChunk.Children.Count != 1)
+            // If the attribute value is a Dynamic value, it cannot be preallocated.
+            if (CSharpTagHelperCodeRenderer.IsDynamicAttributeValue(attribute.Value))
             {
                 return false;
             }
 
-            if (parentChunk.Children[0] is LiteralChunk)
+            // Only attributes that are associated with string typed properties can be preallocated.
+            var attributeName = attribute.Key;
+            var attributeValueChunk = attribute.Value;
+            var associatedDescriptors = tagHelperDescriptors.Where(descriptor =>
+                descriptor.Attributes.Any(attributeDescriptor => attributeDescriptor.IsNameMatch(attributeName)));
+            foreach (var associatedDescriptor in associatedDescriptors)
             {
-                return true;
+                var associatedAttributeDescriptor = associatedDescriptor.Attributes.First(
+                    attributeDescriptor => attributeDescriptor.IsNameMatch(attributeName));
+                if (!associatedAttributeDescriptor.IsStringProperty)
+                {
+                    return false;
+                }
             }
 
-            return false;
+            return true;
         }
 
         public override void Accept(Chunk chunk)

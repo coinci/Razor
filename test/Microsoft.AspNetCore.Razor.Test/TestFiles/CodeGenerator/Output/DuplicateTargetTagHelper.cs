@@ -16,7 +16,6 @@ namespace TestOutput
         private global::TestNamespace.InputTagHelper __TestNamespace_InputTagHelper = null;
         private global::TestNamespace.CatchAllTagHelper __TestNamespace_CatchAllTagHelper = null;
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "checkbox");
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("checked", "true");
         #line hidden
         public DuplicateTargetTagHelper()
         {
@@ -40,8 +39,12 @@ namespace TestOutput
             __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_0.Value.ToString();
             __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_0);
             __TestNamespace_CatchAllTagHelper.Type = __TestNamespace_InputTagHelper.Type;
-            __TestNamespace_InputTagHelper.Checked = __tagHelperAttribute_1.Value.ToString();
-            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_1);
+#line 3 "DuplicateTargetTagHelper.cshtml"
+__TestNamespace_InputTagHelper.Checked = true;
+
+#line default
+#line hidden
+            __tagHelperExecutionContext.AddTagHelperAttribute("checked", __TestNamespace_InputTagHelper.Checked);
             __TestNamespace_CatchAllTagHelper.Checked = __TestNamespace_InputTagHelper.Checked;
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(33, 40, false);

@@ -423,23 +423,6 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
             Chunk attributeValueChunk,
             string valueAccessor)
         {
-            var preallocatedAttributeValueChunk = attributeValueChunk as PreallocatedTagHelperAttributeChunk;
-            if (preallocatedAttributeValueChunk != null)
-            {
-                var attributeValueAccessor = string.Format(
-                CultureInfo.InvariantCulture,
-                "{0}.{1}",
-                preallocatedAttributeValueChunk.AttributeVariableAccessor,
-                attributeDescriptor.PropertyName);
-
-                _writer
-                    .WriteStartAssignment(valueAccessor)
-                    .Write(preallocatedAttributeValueChunk.AttributeVariableAccessor)
-                    .Write(".Value.ToString()")
-                    .WriteLine(";");
-                return;
-            }
-
             // Plain text values are non Razor code (@DateTime.Now) values. If an attribute is bufferable it
             // may be more than just a plain text value, it may also contain Razor code which is why we attempt
             // to retrieve a plain text value here.
@@ -811,7 +794,7 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
             return false;
         }
 
-        private static bool IsDynamicAttributeValue(Chunk attributeValueChunk)
+        public static bool IsDynamicAttributeValue(Chunk attributeValueChunk)
         {
             var parentChunk = attributeValueChunk as ParentChunk;
             if (parentChunk != null)

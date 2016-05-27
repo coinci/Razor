@@ -20,7 +20,6 @@ namespace TestOutput
         private global::TestNamespace.InputTagHelper2 __TestNamespace_InputTagHelper2 = null;
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_3 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "text");
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_4 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "checkbox");
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_5 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("checked", "true");
         #line hidden
         public BasicTagHelpers()
         {
@@ -90,8 +89,12 @@ namespace TestOutput
                 __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_4.Value.ToString();
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_4);
                 __TestNamespace_InputTagHelper2.Type = __TestNamespace_InputTagHelper.Type;
-                __TestNamespace_InputTagHelper2.Checked = __tagHelperAttribute_5.Value.ToString();
-                __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_5);
+#line 7 "BasicTagHelpers.cshtml"
+__TestNamespace_InputTagHelper2.Checked = **From custom attribute code renderer**: true;
+
+#line default
+#line hidden
+                __tagHelperExecutionContext.AddTagHelperAttribute("checked", __TestNamespace_InputTagHelper2.Checked);
                 await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
                 Instrumentation.BeginContext(271, 39, false);
                 Write(__tagHelperExecutionContext.Output);

@@ -15,9 +15,6 @@ namespace TestOutput
         private global::Microsoft.AspNetCore.Razor.Runtime.TagHelperScopeManager __tagHelperScopeManager = null;
         private global::TestNamespace.InputTagHelper __TestNamespace_InputTagHelper = null;
         private global::TestNamespace.CatchAllTagHelper __TestNamespace_CatchAllTagHelper = null;
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "MyValue");
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "MySecondValue");
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_2 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("catch-all", "MyValue");
         #line hidden
         public EnumTagHelpers()
         {
@@ -91,8 +88,12 @@ AddHtmlAttributeValue("", 128, MyEnum.MySecondValue, 128, 21, false);
             __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
             __TestNamespace_CatchAllTagHelper = CreateTagHelper<global::TestNamespace.CatchAllTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_CatchAllTagHelper);
-            __TestNamespace_InputTagHelper.Value = __tagHelperAttribute_0.Value.ToString();
-            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_0);
+#line 9 "EnumTagHelpers.cshtml"
+__TestNamespace_InputTagHelper.Value = global::Microsoft.AspNetCore.Razor.Test.Generator.MyEnum.MyValue;
+
+#line default
+#line hidden
+            __tagHelperExecutionContext.AddTagHelperAttribute("value", __TestNamespace_InputTagHelper.Value);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(155, 25, false);
             Write(__tagHelperExecutionContext.Output);
@@ -108,10 +109,18 @@ AddHtmlAttributeValue("", 128, MyEnum.MySecondValue, 128, 21, false);
             __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
             __TestNamespace_CatchAllTagHelper = CreateTagHelper<global::TestNamespace.CatchAllTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_CatchAllTagHelper);
-            __TestNamespace_InputTagHelper.Value = __tagHelperAttribute_1.Value.ToString();
-            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_1);
-            __TestNamespace_CatchAllTagHelper.CatchAll = __tagHelperAttribute_2.Value.ToString();
-            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_2);
+#line 10 "EnumTagHelpers.cshtml"
+__TestNamespace_InputTagHelper.Value = global::Microsoft.AspNetCore.Razor.Test.Generator.MyEnum.MySecondValue;
+
+#line default
+#line hidden
+            __tagHelperExecutionContext.AddTagHelperAttribute("value", __TestNamespace_InputTagHelper.Value);
+#line 10 "EnumTagHelpers.cshtml"
+__TestNamespace_CatchAllTagHelper.CatchAll = global::Microsoft.AspNetCore.Razor.Test.Generator.MyEnum.MyValue;
+
+#line default
+#line hidden
+            __tagHelperExecutionContext.AddTagHelperAttribute("catch-all", __TestNamespace_CatchAllTagHelper.CatchAll);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             Instrumentation.BeginContext(182, 50, false);
             Write(__tagHelperExecutionContext.Output);
