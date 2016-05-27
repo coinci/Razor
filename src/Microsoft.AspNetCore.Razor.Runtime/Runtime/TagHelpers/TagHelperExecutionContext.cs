@@ -196,8 +196,21 @@ namespace Microsoft.AspNetCore.Razor.Runtime.TagHelpers
                 throw new ArgumentNullException(nameof(name));
             }
 
-
             _allAttributes.Add(name, value);
+        }
+
+        /// <summary>
+        /// Tracks the <see cref="ITagHelper"/> bound attribute.
+        /// </summary>
+        /// <param name="attribute">The bound attribute.</param>
+        public void AddTagHelperAttribute(TagHelperAttribute attribute)
+        {
+            if (attribute == null)
+            {
+                throw new ArgumentNullException(nameof(attribute));
+            }
+
+            _allAttributes.Add(attribute);
         }
 
         /// <summary>

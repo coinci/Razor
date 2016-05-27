@@ -93,14 +93,14 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators.Visitors
 
             if (!Context.Host.DesignTimeMode)
             {
-                PreAllocateUnboundTagHelperAttributes(chunk);
+                PreAllocateTagHelperAttributes(chunk);
             }
 
             // We need to dive deeper to ensure we pick up any nested tag helpers.
             Accept(chunk.Children);
         }
 
-        private void PreAllocateUnboundTagHelperAttributes(TagHelperChunk chunk)
+        private void PreAllocateTagHelperAttributes(TagHelperChunk chunk)
         {
             var boundAttributes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             for (var i = 0; i < chunk.Attributes.Count; i++)
@@ -108,15 +108,17 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators.Visitors
                 var attribute = chunk.Attributes[i];
                 var hasAssociatedDescriptors = chunk.Descriptors.Any(descriptor =>
                     descriptor.Attributes.Any(attributeDescriptor => attributeDescriptor.IsNameMatch(attribute.Key)));
-
                 // If there's no descriptors associated or we're hitting a bound attribute a second time.
-                if (!hasAssociatedDescriptors || !boundAttributes.Add(attribute.Key))
+                var isUnBoundAttribute = !hasAssociatedDescriptors || !boundAttributes.Add(attribute.Key);
+
+                // Perf: We will preallocate TagHelperAttribute for unbound attributes and bound string valued attributes.
+                if (isUnBoundAttribute || IsLiteralAttributeValue(attribute.Value))
                 {
                     string preAllocatedAttributeVariableName = null;
 
                     if (attribute.Value == null)
                     {
-                        var preAllocatedAttributeKey = new TagHelperAttributeKey(attribute.Key, value: null);
+                        var preAllocatedAttributeKey = new TagHelperAttributeKey(attribute.Key, value: null, unBoundAttribute: isUnBoundAttribute);
                         if (TryCachePreallocatedVariableName(preAllocatedAttributeKey, out preAllocatedAttributeVariableName))
                         {
                             Writer
@@ -135,10 +137,13 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators.Visitors
                         string plainText;
                         if (CSharpTagHelperCodeRenderer.TryGetPlainTextValue(attribute.Value, out plainText))
                         {
-                            var preAllocatedAttributeKey = new TagHelperAttributeKey(attribute.Key, plainText);
+                            var preAllocatedAttributeKey = new TagHelperAttributeKey(attribute.Key, plainText, isUnBoundAttribute);
                             if (TryCachePreallocatedVariableName(preAllocatedAttributeKey, out preAllocatedAttributeVariableName))
                             {
-                                Writer
+                                if (isUnBoundAttribute)
+                                {
+                                    // For unbound attributes, we need to create HtmlString.
+                                    Writer
                                     .Write("private static readonly global::")
                                     .Write(_tagHelperContext.TagHelperAttributeTypeName)
                                     .Write(" ")
@@ -151,6 +156,21 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators.Visitors
                                     .WriteStringLiteral(plainText)
                                     .WriteEndMethodInvocation(endLine: false)
                                     .WriteEndMethodInvocation();
+                                }
+                                else
+                                {
+                                    Writer
+                                    .Write("private static readonly global::")
+                                    .Write(_tagHelperContext.TagHelperAttributeTypeName)
+                                    .Write(" ")
+                                    .Write(preAllocatedAttributeVariableName)
+                                    .Write(" = ")
+                                    .WriteStartNewObject("global::" + _tagHelperContext.TagHelperAttributeTypeName)
+                                    .WriteStringLiteral(attribute.Key)
+                                    .WriteParameterSeparator()
+                                    .WriteStringLiteral(plainText)
+                                    .WriteEndMethodInvocation();
+                                }
                             }
                         }
                     }
@@ -166,6 +186,23 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators.Visitors
                     }
                 }
             }
+        }
+
+        private static bool IsLiteralAttributeValue(Chunk attributeValueChunk)
+        {
+            var parentChunk = attributeValueChunk as ParentChunk;
+
+            if (parentChunk == null || parentChunk.Children.Count != 1)
+            {
+                return false;
+            }
+
+            if (parentChunk.Children[0] is LiteralChunk)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public override void Accept(Chunk chunk)
@@ -215,21 +252,25 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators.Visitors
 
         private struct TagHelperAttributeKey : IEquatable<TagHelperAttributeKey>
         {
-            public TagHelperAttributeKey(string name, string value)
+            public TagHelperAttributeKey(string name, string value, bool unBoundAttribute)
             {
                 Name = name;
                 Value = value;
+                UnBoundAttribute = unBoundAttribute;
             }
 
             public string Name { get; }
 
             public string Value { get; }
 
+            public bool UnBoundAttribute { get; }
+
             public override int GetHashCode()
             {
                 var hashCodeCombiner = HashCodeCombiner.Start();
                 hashCodeCombiner.Add(Name, StringComparer.Ordinal);
                 hashCodeCombiner.Add(Value, StringComparer.Ordinal);
+                hashCodeCombiner.Add(UnBoundAttribute);
 
                 return hashCodeCombiner.CombinedHash;
             }
@@ -249,7 +290,8 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators.Visitors
             public bool Equals(TagHelperAttributeKey other)
             {
                 return string.Equals(Name, other.Name, StringComparison.Ordinal) &&
-                    string.Equals(Value, other.Value, StringComparison.Ordinal);
+                    string.Equals(Value, other.Value, StringComparison.Ordinal) &&
+                    UnBoundAttribute == other.UnBoundAttribute;
             }
         }
     }

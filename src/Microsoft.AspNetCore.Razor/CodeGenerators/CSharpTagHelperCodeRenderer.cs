@@ -287,6 +287,12 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
                         continue;
                     }
 
+                    if (attributeValueChunk is PreallocatedTagHelperAttributeChunk)
+                    {
+                        RenderPreallocatedBoundAttribute(attributeName, attributeValueChunk);
+                        continue;
+                    }
+
                     // We need to capture the tag helper's property value accessor so we can retrieve it later
                     // if there are more tag helpers that need the value.
                     string valueAccessor = null;
@@ -557,6 +563,22 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
                         .WriteEndMethodInvocation();
                 }
             }
+        }
+
+        private void RenderPreallocatedBoundAttribute(string attributeName, Chunk attributeValueChunk)
+        {
+            if (_designTimeMode)
+            {
+                // Execution contexts are a runtime feature.
+                return;
+            }
+
+            _writer
+                .WriteStartInstanceMethodInvocation(
+                    ExecutionContextVariableName,
+                    _tagHelperContext.ExecutionContextAddTagHelperAttributeMethodName)
+                .Write(((PreallocatedTagHelperAttributeChunk)attributeValueChunk).AttributeVariableAccessor)
+                .WriteEndMethodInvocation();
         }
 
         private void RenderEndTagHelpersScope()
