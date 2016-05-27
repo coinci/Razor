@@ -287,12 +287,6 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
                         continue;
                     }
 
-                    if (attributeValueChunk is PreallocatedTagHelperAttributeChunk)
-                    {
-                        RenderPreallocatedBoundAttribute(attributeName, attributeValueChunk);
-                        continue;
-                    }
-
                     // We need to capture the tag helper's property value accessor so we can retrieve it later
                     // if there are more tag helpers that need the value.
                     string valueAccessor = null;
@@ -340,6 +334,15 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
             // If this attribute value has not been seen before, need to record its value.
             if (previousValueAccessor == null)
             {
+                var preallocatedAttributeValueChunk = attributeValueChunk as PreallocatedTagHelperAttributeChunk;
+
+                if (preallocatedAttributeValueChunk != null)
+                {
+                    RenderPreallocatedAttributeValues(preallocatedAttributeValueChunk, currentValueAccessor);
+
+                    return currentValueAccessor;
+                }
+
                 // Bufferable attributes are attributes that can have Razor code inside of them. Such
                 // attributes have string values and may be calculated using a temporary TextWriter or other
                 // buffer.
@@ -383,6 +386,36 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
             }
         }
 
+        private void RenderPreallocatedAttributeValues(
+            PreallocatedTagHelperAttributeChunk preallocatedAttributeValueChunk,
+            string valueAccessor)
+        {
+            var attributeValueAccessor = string.Format(
+                    CultureInfo.InvariantCulture,
+                    "{0}.{1}",
+                    preallocatedAttributeValueChunk.AttributeVariableAccessor,
+                    _tagHelperContext.TagHelperAttributeValuePropertyName);
+
+            _writer
+                .WriteStartAssignment(valueAccessor)
+                .WriteInstanceMethodInvocation(
+                    attributeValueAccessor,
+                    nameof(attributeValueAccessor.ToString));
+
+            if (_designTimeMode)
+            {
+                // Execution contexts are a runtime feature.
+                return;
+            }
+
+            _writer
+                .WriteStartInstanceMethodInvocation(
+                    ExecutionContextVariableName,
+                    _tagHelperContext.ExecutionContextAddTagHelperAttributeMethodName)
+                .Write(preallocatedAttributeValueChunk.AttributeVariableAccessor)
+                .WriteEndMethodInvocation();
+        }
+
         // Render assignment of attribute value to the value accessor.
         private void RenderNewAttributeValueAssignment(
             TagHelperAttributeDescriptor attributeDescriptor,
@@ -390,6 +423,23 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
             Chunk attributeValueChunk,
             string valueAccessor)
         {
+            var preallocatedAttributeValueChunk = attributeValueChunk as PreallocatedTagHelperAttributeChunk;
+            if (preallocatedAttributeValueChunk != null)
+            {
+                var attributeValueAccessor = string.Format(
+                CultureInfo.InvariantCulture,
+                "{0}.{1}",
+                preallocatedAttributeValueChunk.AttributeVariableAccessor,
+                attributeDescriptor.PropertyName);
+
+                _writer
+                    .WriteStartAssignment(valueAccessor)
+                    .Write(preallocatedAttributeValueChunk.AttributeVariableAccessor)
+                    .Write(".Value.ToString()")
+                    .WriteLine(";");
+                return;
+            }
+
             // Plain text values are non Razor code (@DateTime.Now) values. If an attribute is bufferable it
             // may be more than just a plain text value, it may also contain Razor code which is why we attempt
             // to retrieve a plain text value here.
@@ -563,22 +613,6 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
                         .WriteEndMethodInvocation();
                 }
             }
-        }
-
-        private void RenderPreallocatedBoundAttribute(string attributeName, Chunk attributeValueChunk)
-        {
-            if (_designTimeMode)
-            {
-                // Execution contexts are a runtime feature.
-                return;
-            }
-
-            _writer
-                .WriteStartInstanceMethodInvocation(
-                    ExecutionContextVariableName,
-                    _tagHelperContext.ExecutionContextAddTagHelperAttributeMethodName)
-                .Write(((PreallocatedTagHelperAttributeChunk)attributeValueChunk).AttributeVariableAccessor)
-                .WriteEndMethodInvocation();
         }
 
         private void RenderEndTagHelpersScope()

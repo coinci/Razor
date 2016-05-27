@@ -42,6 +42,7 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
             ExecutionContextSetOutputContentAsyncMethodName = "SetOutputContentAsync";
             TagHelperAttributeTypeName = "Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute";
             EncodedHtmlStringTypeName = "Microsoft.AspNetCore.Html.HtmlString";
+            TagHelperAttributeValuePropertyName = "Value";
         }
 
         /// <summary>
@@ -235,5 +236,7 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
         /// The name of the type used to represent encoded content.
         /// </summary>
         public string EncodedHtmlStringTypeName { get; set; }
+
+        public string TagHelperAttributeValuePropertyName { get; set; }
     }
 }
