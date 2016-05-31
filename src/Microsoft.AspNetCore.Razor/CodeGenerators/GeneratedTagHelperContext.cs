@@ -237,6 +237,9 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
         /// </summary>
         public string EncodedHtmlStringTypeName { get; set; }
 
+        /// <summary>
+        /// The name of the Value property of <c>TagHelperAttribute</c>
+        /// </summary>
         public string TagHelperAttributeValuePropertyName { get; set; }
     }
 }

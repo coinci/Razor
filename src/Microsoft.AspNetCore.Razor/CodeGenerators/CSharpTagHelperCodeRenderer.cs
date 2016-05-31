@@ -391,10 +391,10 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
             string valueAccessor)
         {
             var attributeValueAccessor = string.Format(
-                    CultureInfo.InvariantCulture,
-                    "{0}.{1}",
-                    preallocatedAttributeValueChunk.AttributeVariableAccessor,
-                    _tagHelperContext.TagHelperAttributeValuePropertyName);
+                CultureInfo.InvariantCulture,
+                "{0}.{1}",
+                preallocatedAttributeValueChunk.AttributeVariableAccessor,
+                _tagHelperContext.TagHelperAttributeValuePropertyName);
 
             _writer
                 .WriteStartAssignment(valueAccessor)
