@@ -68,7 +68,7 @@ namespace TestOutput
                 WriteLiteral(" + 1");
                 __tagHelperStringValueBuffer = EndWriteTagHelperAttribute();
                 __tagHelperExecutionContext.AddHtmlAttribute("data-interval", Html.Raw(__tagHelperStringValueBuffer));
-                __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_3.Value.ToString();
+                __TestNamespace_InputTagHelper.Type = (string)__tagHelperAttribute_3.Value;
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_3);
                 __TestNamespace_InputTagHelper2.Type = __TestNamespace_InputTagHelper.Type;
                 await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
@@ -86,7 +86,7 @@ namespace TestOutput
                 __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
                 __TestNamespace_InputTagHelper2 = CreateTagHelper<global::TestNamespace.InputTagHelper2>();
                 __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper2);
-                __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_4.Value.ToString();
+                __TestNamespace_InputTagHelper.Type = (string)__tagHelperAttribute_4.Value;
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_4);
                 __TestNamespace_InputTagHelper2.Type = __TestNamespace_InputTagHelper.Type;
 #line 7 "BasicTagHelpers.cshtml"

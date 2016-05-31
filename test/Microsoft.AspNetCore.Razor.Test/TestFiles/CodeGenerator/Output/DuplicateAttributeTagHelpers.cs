@@ -46,7 +46,7 @@ namespace TestOutput
                 __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
                 __TestNamespace_InputTagHelper2 = CreateTagHelper<global::TestNamespace.InputTagHelper2>();
                 __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper2);
-                __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_2.Value.ToString();
+                __TestNamespace_InputTagHelper.Type = (string)__tagHelperAttribute_2.Value;
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_2);
                 __TestNamespace_InputTagHelper2.Type = __TestNamespace_InputTagHelper.Type;
                 __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
@@ -65,7 +65,7 @@ namespace TestOutput
                 __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
                 __TestNamespace_InputTagHelper2 = CreateTagHelper<global::TestNamespace.InputTagHelper2>();
                 __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper2);
-                __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_2.Value.ToString();
+                __TestNamespace_InputTagHelper.Type = (string)__tagHelperAttribute_2.Value;
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_2);
                 __TestNamespace_InputTagHelper2.Type = __TestNamespace_InputTagHelper.Type;
 #line 5 "DuplicateAttributeTagHelpers.cshtml"

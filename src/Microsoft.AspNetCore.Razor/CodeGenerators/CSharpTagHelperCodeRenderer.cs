@@ -386,6 +386,7 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
             }
         }
 
+        // Render bound attributes that are of string type and are preallocated.
         private void RenderPreallocatedAttributeValues(
             PreallocatedTagHelperAttributeChunk preallocatedAttributeValueChunk,
             string valueAccessor)
@@ -398,9 +399,9 @@ namespace Microsoft.AspNetCore.Razor.CodeGenerators
 
             _writer
                 .WriteStartAssignment(valueAccessor)
-                .WriteInstanceMethodInvocation(
-                    attributeValueAccessor,
-                    nameof(attributeValueAccessor.ToString));
+                .Write("(string)")
+                .Write(attributeValueAccessor)
+                .WriteLine(";");
 
             if (_designTimeMode)
             {

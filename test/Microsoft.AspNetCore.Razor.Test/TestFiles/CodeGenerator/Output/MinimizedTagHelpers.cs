@@ -66,7 +66,7 @@ namespace TestOutput
                 __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_1);
                 __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
                 __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
-                __TestNamespace_InputTagHelper.BoundRequiredString = __tagHelperAttribute_3.Value.ToString();
+                __TestNamespace_InputTagHelper.BoundRequiredString = (string)__tagHelperAttribute_3.Value;
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_3);
                 await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
                 Instrumentation.BeginContext(161, 119, false);
@@ -86,9 +86,9 @@ namespace TestOutput
                 __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_1);
                 __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
                 __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
-                __TestNamespace_CatchAllTagHelper.BoundRequiredString = __tagHelperAttribute_4.Value.ToString();
+                __TestNamespace_CatchAllTagHelper.BoundRequiredString = (string)__tagHelperAttribute_4.Value;
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_4);
-                __TestNamespace_InputTagHelper.BoundRequiredString = __tagHelperAttribute_5.Value.ToString();
+                __TestNamespace_InputTagHelper.BoundRequiredString = (string)__tagHelperAttribute_5.Value;
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_5);
                 await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
                 Instrumentation.BeginContext(286, 176, false);
@@ -109,7 +109,7 @@ namespace TestOutput
                 __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_6);
                 __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
                 __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
-                __TestNamespace_InputTagHelper.BoundRequiredString = __tagHelperAttribute_8.Value.ToString();
+                __TestNamespace_InputTagHelper.BoundRequiredString = (string)__tagHelperAttribute_8.Value;
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_8);
                 await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
                 Instrumentation.BeginContext(468, 206, false);

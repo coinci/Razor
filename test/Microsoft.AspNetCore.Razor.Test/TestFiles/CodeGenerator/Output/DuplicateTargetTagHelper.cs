@@ -36,7 +36,7 @@ namespace TestOutput
             __tagHelperExecutionContext.Add(__TestNamespace_InputTagHelper);
             __TestNamespace_CatchAllTagHelper = CreateTagHelper<global::TestNamespace.CatchAllTagHelper>();
             __tagHelperExecutionContext.Add(__TestNamespace_CatchAllTagHelper);
-            __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_0.Value.ToString();
+            __TestNamespace_InputTagHelper.Type = (string)__tagHelperAttribute_0.Value;
             __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_0);
             __TestNamespace_CatchAllTagHelper.Type = __TestNamespace_InputTagHelper.Type;
 #line 3 "DuplicateTargetTagHelper.cshtml"

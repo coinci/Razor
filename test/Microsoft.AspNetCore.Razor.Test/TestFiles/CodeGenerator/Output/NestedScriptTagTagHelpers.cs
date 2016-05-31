@@ -68,7 +68,7 @@ namespace TestOutput
                 WriteLiteral(" + 1");
                 __tagHelperStringValueBuffer = EndWriteTagHelperAttribute();
                 __tagHelperExecutionContext.AddHtmlAttribute("data-interval", Html.Raw(__tagHelperStringValueBuffer));
-                __TestNamespace_InputTagHelper.Type = __tagHelperAttribute_2.Value.ToString();
+                __TestNamespace_InputTagHelper.Type = (string)__tagHelperAttribute_2.Value;
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_2);
                 __TestNamespace_InputTagHelper2.Type = __TestNamespace_InputTagHelper.Type;
 #line 8 "NestedScriptTagTagHelpers.cshtml"
